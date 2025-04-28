@@ -1,0 +1,164 @@
+/* navba*/ 
+body{
+    font-family:  sans-serif !important ;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    text-align: center ;
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+margin: 0;
+  };
+.container{
+    flex:1;
+}
+
+.navbar{
+    height: 5rem;
+    background-color: #FFf;
+}
+
+.fa-compass{
+    font-size: 2rem;
+    color: #fe424d;
+}
+.nav-link{
+    color: #222222 !important;
+}
+
+/* footer */
+
+
+.footer-socal{
+    text-align: center;
+}
+.footer-socal i{
+    padding: 0 0.3rem 0 0.3rem;
+    font-size: 1.3rem;
+    color: #222222;
+}
+.footer-tmc{
+text-align: center;
+}
+.footer-tmc a{
+    padding: 0 0.3rem 0 0.3rem;
+    text-decoration: none;
+    color: #222222;
+}
+.footer-main{
+    height: 6rem;
+    background-color: #ebebeb;
+
+    
+}
+.footer-tmc a:hover{
+text-decoration: underline;
+}
+
+
+/* card */
+
+
+.card{
+    border: none !important;
+    padding-bottom: 3.4rem !important;
+}
+.card-img-top{
+    border-radius: 1rem !important;
+    object-fit: cover !important;
+    height: 20rem;
+    width: 20rem;
+    opacity: 1;
+}
+.main-a{
+    text-decoration: none;
+    color: inherit;
+
+}
+
+
+/* hover */
+.card-img-top:hover{
+    opacity: 0.9;
+}
+/* show */
+.show{
+    padding-left: 1rem;
+}
+
+.form{
+display: flex;
+}
+.edit{
+    margin: 1.5rem 0 0 2rem;
+}
+
+.tax{
+    display: flex;
+}
+.gst{
+display: none;
+}
+
+/* reviews */
+
+.review-form {
+    max-width: 500px;
+    margin: 2rem auto; /* center the form */
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.review-form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 0.5rem;
+    resize: none; /* user can't stretch it randomly */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+}
+
+.review-form input[type="range"] {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.review-form button {
+    padding: 0.5rem 1rem;
+    background-color: #fe424d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.review-form button:hover {
+    background-color: #ff6b72;
+}
+
+
+
+/* map */
+
+/* 
+ * Always set the map height explicitly to define the size of the div element
+ * that contains the map. 
+ */
+ #map {
+    height: 28rem;
+    width: 50rem;
+  }
+  
+  /* 
+   * Optional: Makes the sample page fill the window. 
+   */
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }

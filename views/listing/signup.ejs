@@ -1,0 +1,44 @@
+<% layout("/layout/boilerplat.ejs") %>
+<style>
+    h1{
+        margin: 1rem 0 0 2rem;
+        color: rgb(221, 41, 41);
+        font-weight: 570;
+      
+    }
+</style>
+<h1>sign up </h1>
+<br>
+<div  class="mb-3 offset-2">
+    <div class="col-6">
+<form action="/signup" method="post"  class="needs-validation" novalidate>
+    <div  class="mb-3 offset-2 main">
+        <div>
+            <label class="form-label" for="username">username</label>
+            <input  class="form-control" id="username" type="text" name="username" required placeholder=" ex.. username">
+            <div class="invalid-feedback">
+                enter valid username
+              </div>
+        </div>
+<br>
+         <div>
+        <label class="form-label" for="email"> email</label>
+        <input  class="form-control" type="text" id="email" name="email" required placeholder="ex.. abc@gmail.com">
+        <div class="invalid-feedback">
+            enter valid email
+          </div>
+    </div>
+<br>
+    <div>
+        <label class="form-label" for="password"> password</label>
+        <input  class="form-control" id="password" required type="password" name="password">
+        <div class="invalid-feedback">
+            enter valid password
+          </div>
+    </div>
+<br><br>
+    <button  class="btn btn-danger" >register</button>
+    </div>
+</div>
+</form>
+</div>

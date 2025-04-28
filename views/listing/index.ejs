@@ -1,0 +1,22 @@
+<% layout("/layout/boilerplat.ejs") %>
+<body>
+  <h2>All Listings</h2>
+   <div class="row row-col-lg-3 row-col-md-2 row-col-sm-1">
+    <% for( let list of alldata ) { %>
+      <div class="card" style="width: 20rem;">
+        <a href="/listings/<%= list.id %>" class="main-a"> <img src="<%= list.image.url %>" class="card-img-top" alt=" i love you t"></a>
+     
+        
+        <div class="card-body">
+            <a href="/listings<%= list.id %>" class="main-a">  <p class="card-text"><b> <%= list.title %> </b><br> 
+              <div class="tax">
+              &#8377;  <%=list.price.toLocaleString("en-IN")%> / Night <i  class="gst"> + 18% TAX </i></div><br> </a>  
+          </p>
+        </div>
+      </div>
+      <% } %>
+          <br><hr>
+   </div>
+  
+</body>
+

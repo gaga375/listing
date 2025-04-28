@@ -1,0 +1,112 @@
+<% layout("/layout/boilerplat.ejs") %>
+<body>
+  <script>
+   let  address1 = "<%= data.location %>";
+   let title1 = "<%= data.title %>";
+    const apiKey1 = "<%= process.env.GOOGLE_API %>";
+  </script>
+  <div class="row show">
+    <div class="col-5 offset-2">
+    <h1 class="col show"><%= data.title %></h1>
+  <ul>
+    <div class="card" style="width: 35rem; height: 42rem;">
+      <img src="<%= data.image.url %>" class="card-img-top" alt="...">
+      <div class="card-body"> 
+        <p class="card-text"><h2><%= data.title %></h2><br>
+          <p><i><b> owner: <%= data.owner.username %> </b></i></p>
+        <%= data.description %> <br><br>
+      <b> <%= data.price.toLocaleString("en-IN")%> </b><br>
+        <%= data.location %> <br>
+        <%= data.country %> <br>
+        </ul>
+        </p>
+        <% if (req.user && req.user._id.equals(data.owner._id)) { %>
+      <div class="form">
+        <form method="post" class="reviews-form" action="/listings/<%= data.id %>?_method=DELETE">
+          <br>
+          <button class="btn delete btn-danger">DELETE </button>
+        </form>
+        <form action="/listings/<%= data.id %>/new" > 
+         <button class="btn edit btn-dark" >Edit</button>
+        </form>
+      </div>
+<% } %>
+     
+
+        </form>
+      </div> 
+    </div>
+    <hr>
+
+    <% if (req.user){ %>
+<div class="col-8 offset-3">
+  <form method="post" class="needs-validation" action="/listings/<%= data.id %>/reviews?_method=POST" novalidate>
+  
+  
+    <div>
+    <label for="rating"> rating</label>
+    <fieldset class="starability-slot">
+      <legend>rating</legend>
+      <input type="radio" 
+      id="no-rate rating "
+       class="input-no-rate" 
+       name="reviews[rating]" value="1"
+        checked aria-label="No rating." />
+
+      <input type="radio" id="first-rate1" name="reviews[rating]" value="1" />
+      <label for="first-rate1" title="Terrible">1 star</label>
+      <input type="radio" id="first-rate2" name="reviews[rating]" value="2" />
+      <label for="first-rate2" title="Not good">2 stars</label>
+      <input type="radio" id="first-rate3" name="reviews[rating]" value="3" />
+      <label for="first-rate3" title="Average">3 stars</label>
+      <input type="radio" id="first-rate4" name="reviews[rating]" value="4" />
+      <label for="first-rate4" title="Very good">4 stars</label>
+      <input type="radio" id="first-rate5" name="reviews[rating]" value="5" />
+      <label for="first-rate5" title="Amazing">5 stars</label>
+    </fieldset>
+    <div class="invalid-feedback"></div>
+    </div>
+
+  <div class="form-floating">
+    <label for="reviews"> reviews</label><br>
+    <textarea name="reviews[comment]" class="form-control"  id="reviews" cols="30" rows="5"required ></textarea> 
+    <div class="invalid-feedback"> enter reviews</div>
+    <br>
+      </div>
+      <button class="btn btn-outline-success"> submit</button>
+    </form> 
+<hr>
+<% } %>
+
+<% if (data.reviews.length > 0) { %>
+<h2>all reviews</h2>
+<% for( let reviews of data.reviews ) { %>
+  <div class="card border border-worning-subtle " style="width: 25rem;  height: 13rem; margin-bottom: 1rem;"> 
+    <div class="card-body"> 
+      <h5 class="card-title" >@<%=  reviews.author.username%></h5>
+      <p class="starability-result" data-rating="<%= reviews.rating %>">
+      <h5 class="card-title"><%= reviews.comment %></h5>
+      <form action="/listings/<%= data.id%>/reviews/<%=reviews.id%>?_method=DELETE" method="POST">
+
+        <button class="btn edit btn-dark">DELETE</button>
+     </form>
+<br>
+ </div>
+</div>
+  <% } %>
+  <% } %>
+    </div>
+
+<div class="col-6 offset-3">
+  <h2>where you'll be </h2>
+  <div id="map">
+
+  </div>
+</div>
+<script async
+  src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.GOOGLE_API %>&callback=initMap">
+</script>
+<script src="/public/js/map.js"></script>
+  </body>
+
+

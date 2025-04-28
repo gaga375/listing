@@ -1,0 +1,165 @@
+<style>
+  .main-fet{
+    display: flex;
+    margin: 2rem 0 1rem 4rem;
+
+  }
+  .icon{
+    margin-left: 2.5rem;
+    text-align: center;
+    opacity: 0.8;
+  }
+  .icon p{
+    opacity: 0.7;
+  }
+  .icon:hover{
+    opacity: 1;
+    cursor: pointer;
+  }
+  .form-check-reverse{
+    height: 3.2rem;
+    width: 15rem;
+    border:1px solid rgb(179, 33, 33);
+    border-radius: 20px; 
+    display: flex;
+    margin: 0 0 0.5rem 3rem;
+    justify-content:center;
+  }
+  .form-check-label{
+  padding: 0.7rem 1rem 0 0;
+  }
+  .form-check-input{
+    margin: 0.9rem 3rem 0 0 ;
+  }
+  .d-flex{
+    margin-right: auto;
+  }
+  .me-2{
+    width: 15rem;
+    border-radius: 20px;
+  }
+  .search{
+    border-radius: 20px;
+  }
+</style>
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings/"><i class="fa-regular fa-compass"></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav me-auto">
+          <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" aria-current="page" href="/listings">all listing</a>
+        <a class="nav-link" href="/listings/new">create listing</a>
+      </div>
+
+
+
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success search" type="submit"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+      </form>
+
+
+
+
+
+
+
+  <% if ( curruser) { %>
+  <a href="/signup/logout">
+    <button class="btn btn-outline-danger ms-auto me-4" id="logout">logout</button>
+  </a> 
+<% } else { %>
+  <a href="/signup">
+    <button class="btn btn-outline-danger ms-auto me-3" id="signUp">signUp</button>
+  </a> 
+
+  <a href="/signup/login">
+   <button class="btn btn-outline-success ms-auto me-4" id="login">login</button>
+ </a> 
+ <% } %>
+   
+    </div>
+  </div>
+</nav>
+
+
+<div class="main-fet">
+
+<div class="icon">
+  <i class="fa-solid fa-person-swimming"></i>
+  <p>ocen</p>
+</div>
+
+<div class="icon">
+  <i class="fa-solid fa-fire"></i>
+  <p>fire</p>
+</div>
+
+<div class="icon">
+  <i class="fa-solid fa-bed"></i>
+  <p>rooms</p>
+</div>
+
+  <div class="icon">
+    <i class="fa-solid fa-mountain-city"></i>
+    <p>mountain-city</p>
+  </div>
+  
+  <div class="icon">
+    <i class="fa-solid fa-mountain-sun"></i>
+    <p>mountain</p>
+  </div>
+  
+  <div class="icon">
+    <i class="fa-solid fa-chess-rook"></i>
+    <p>castle</p>
+  </div>
+
+    <div class="icon">
+      <i class="fa-solid fa-campground"></i>
+      <p>camping</p>
+    </div>
+    
+    <div class="icon">
+      <i class="fa-solid fa-cow"></i>
+      <p>farm</p>
+    </div>
+    
+    <div class="icon">
+      <i class="fa-solid fa-igloo"></i>
+      <p>eglu</p>
+    </div>
+
+    <div class="icon">
+      <i class="fa-solid fa-snowflake"></i>
+      <p>snow</p>
+    </div>
+    
+    <div class="icon">
+      <i class="fa-solid fa-ship"></i>
+      <p>ship</p>
+    </div>
+    
+    <div class="form-check-reverse form-switch">
+      <label class="form-check-label" for="switchCheckDefault">display total after tax</label>
+      <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+    </div>
+    <script>
+      let gst = document.getElementsByClassName("gst") 
+      let checkbox = document.getElementById("switchCheckDefault")
+      checkbox = addEventListener("click",()=>{
+   for(info of gst){
+    if( info.style.display != "inline"){
+    info.style.display="inline"
+    }
+    else{
+      info.style.display="none"
+    }
+   }
+    })
+    </script>
+</div>
