@@ -5,7 +5,7 @@
    let title1 = "<%= data.title %>";
     const apiKey1 = "<%= process.env.GOOGLE_API %>";
   </script>
-  <div class="row show">
+  <!-- <div class="row show">
     <div class="col-5 offset-2">
     <h1 class="col show"><%= data.title %></h1>
   <ul>
@@ -30,23 +30,62 @@
          <button class="btn edit btn-dark" >Edit</button>
         </form>
       </div>
-<% } %>
+<% } %> -->
      
 
+<div class="ml-30 mt-5 pb-8" >
+      <div class="text-4xl font-semibold mt-3 font-stretch-expanded"><%= data.title %></div>
+     <div class="h-90 w-180 bg-red-500 rounded-2xl mt-3 "> <img class="h-90 w-180 bg-red-500 rounded-2xl object-cover" src="<%= data.image.url %>" alt=""></div>
+      <div>
+        <p class=" text-xl pt-5  font-semibold"><%= data.description %></p>
+        <p class=" text-xl font-semibold">&#8377; <%= data.price.toLocaleString("en-IN")%></p>
+        <p class=" text-xl font-semibold"><%= data.location %> </p>
+        <p class=" text-xl font-semibold"> <%= data.country %></p>
+           <p class=" text-2xl pt-2 font-semibold">  <%= data.owner.username %> </p>
+           <% if (req.user && req.user._id.equals(data.owner._id)) { %>
+      <div class="form">
+        <form method="post" class="reviews-form" action="/listings/<%= data.id %>?_method=DELETE">
+          <br>
+          <button class="btn delete btn-danger">DELETE </button>
+        </form>
+        <form action="/listings/<%= data.id %>/new" > 
+         <button class="btn edit btn-dark" >Edit</button>
+        </form>
+      </div>
+<% } %>
+      </div>
+      <hr>
+      <p class="text-3xl pt-3 font-bold col-8 offset-0">What this place offers</p>
+      <div class="grid grid-cols-2 gap-2 col-8 offset-0 pt-6 w-180">
+        <p class="text-xl"> <i class="fa-solid  fa-wifi"></i>&nbsp; wifi</p>
+        <p class="text-xl"><i class="fa-solid fa-tv"></i>&nbsp; TV</p>
+        <p class="text-xl"><i class="fa-solid fa-bath"></i>&nbsp; Bath</p>
+        <p class="text-xl"><i class="fa-solid fa-fan"></i>&nbsp; Hair dryer</p>
+        <p class="text-xl"><i class="fa-solid fa-camera"></i>&nbsp; security cameras on property</p>
+        <p class="text-xl"><i class="fa-solid fa-tablet"></i>&nbsp; Dedicated workspace</p>
+        <p class="text-xl"> <i class="fa-solid fa-snowflake"></i>&nbsp; Air conditoning</p>
+        <p class="text-xl"><i class="fa-solid fa-mountain-sun"></i>&nbsp; Private patio or balcony</p>
+        <p class="line-through text-xl"><i class="fa-solid fa-bell"></i> Carbon monoxide alarm</p>
+        <p class="line-through text-xl"><i class="fa-solid fa-bell"></i>  Smoke alarm</p>
+        <p></p>
+        <p></p>
+      </div>
+
+</div>
         </form>
       </div> 
     </div>
     <hr>
 
     <% if (req.user){ %>
-<div class="col-8 offset-3">
+<div class="col-8 offset-1">
   <form method="post" class="needs-validation" action="/listings/<%= data.id %>/reviews?_method=POST" novalidate>
   
   
-    <div>
-    <label for="rating"> rating</label>
+    <div class="col-8 offset-1">
+    <label for="rating"> </label>
     <fieldset class="starability-slot">
-      <legend>rating</legend>
+      <legend class="font-bold "><h1 class="w-60">Add Reviews</h1></legend>
       <input type="radio" 
       id="no-rate rating "
        class="input-no-rate" 
@@ -67,42 +106,46 @@
     <div class="invalid-feedback"></div>
     </div>
 
-  <div class="form-floating">
+  <div class="form-floating col-8 offset-1">
     <label for="reviews"> reviews</label><br>
-    <textarea name="reviews[comment]" class="form-control"  id="reviews" cols="30" rows="5"required ></textarea> 
+    <textarea name="reviews[comment]" class="form-control"  id="review" required ></textarea> 
     <div class="invalid-feedback"> enter reviews</div>
     <br>
       </div>
-      <button class="btn btn-outline-success"> submit</button>
+      <button class="btn btn-outline-success col-2 offset-1"> submit</button>
     </form> 
-<hr>
+  </div>
 <% } %>
+<hr>
+
+<div class=" col-7 offset-2">
+  <h2>where you'll be </h2>
+  <div id="map">
+  </div>
+</div>
+ <hr>
+
+
 
 <% if (data.reviews.length > 0) { %>
-<h2>all reviews</h2>
+<p class=" pt-25 col-6 offset-1 text-4xl font-bold col-8 offset-2 ">All Reviews</p>
+
 <% for( let reviews of data.reviews ) { %>
-  <div class="card border border-worning-subtle " style="width: 25rem;  height: 13rem; margin-bottom: 1rem;"> 
+  <div class="card showreview border border-worning-subtle h-30 mb-5 col-8 offset-2" > 
     <div class="card-body"> 
       <h5 class="card-title" >@<%=  reviews.author.username%></h5>
       <p class="starability-result" data-rating="<%= reviews.rating %>">
-      <h5 class="card-title"><%= reviews.comment %></h5>
+      <p class="card-title text-xs"><%= reviews.comment %></p>
       <form action="/listings/<%= data.id%>/reviews/<%=reviews.id%>?_method=DELETE" method="POST">
 
-        <button class="btn edit btn-dark">DELETE</button>
+        <button class="btn btn-dark mt-4 ">DELETE</button>
      </form>
 <br>
  </div>
 </div>
   <% } %>
   <% } %>
-    </div>
 
-<div class="col-6 offset-3">
-  <h2>where you'll be </h2>
-  <div id="map">
-
-  </div>
-</div>
 <script async
   src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.GOOGLE_API %>&callback=initMap">
 </script>

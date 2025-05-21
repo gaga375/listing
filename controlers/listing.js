@@ -81,3 +81,19 @@ if(typeof req.file !== "undefined"){
              req.flash("sucess","Listing Deleted")
              res.redirect("/listings");
              }
+
+
+             function toTitleCase(str) {
+              return str
+                .toLowerCase()
+                .split(" ")
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(" ");
+            }
+
+             module.exports.search = async (req,res,next)=>{
+              let search1 = req.body.search;
+            let search = toTitleCase(search1)
+            let newsearch = await listing.find({location:search})
+            res.render("listing/search.ejs",{newsearch,search1})
+             }

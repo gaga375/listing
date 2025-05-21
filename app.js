@@ -1,4 +1,4 @@
-require("dotenv").config(); // Add this line at the top of app.js
+require("dotenv").config();
 
 const express = require("express");
 const app = express();
@@ -9,7 +9,7 @@ const review = require("./routs/review.js")
 const User = require("./routs/user.js")
 let path = require("path");
 const mongostore = require("connect-mongo");
-let  monurl = "mongodb://127.0.0.1:27017/test";
+// let  monurl = "mongodb://127.0.0.1:27017/test";
  let atlerurl = process.env.atlerurl;
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"./views"));
@@ -26,7 +26,7 @@ const { required } = require("joi");
 const { error } = require("console");
 const reviews = require("./listing/models/reviews.js");
 app.use(methodOverride('_method'));
-// authentication 
+
 const user = require("./listing/models/user.js");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -66,7 +66,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, res, next) => {
-  //  console.log("Current User:", req.user); // Debug line
+
     res.locals.sucess = req.flash("success");
     res.locals.error = req.flash("error");
     res.locals.curruser = req.user;
@@ -98,6 +98,9 @@ app.listen(port,()=>{
     console.log("server is start",port);
 });
 
+app.get("/listing/soon",(req,res)=>{
+    res.send("Coming Soon")
+})
 
 /* err handling*/
 

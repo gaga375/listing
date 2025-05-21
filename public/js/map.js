@@ -7,7 +7,7 @@ async function initMap() {
   const address = address1;
   const coords = await getCoordinates(address);
   if (!coords) {
-    console.error("Could not geocode address:", address);
+   // console.error("Could not geocode address:", address);
     return;
   }
 

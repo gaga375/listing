@@ -34,7 +34,6 @@ router
 .post(islogin,upload.single('listing[image]'),validation, wrapasync(controlers.create))
 
 
-
 router
 .route("/:id")
 .get(wrapasync( controlers.show))
@@ -42,10 +41,9 @@ router
 .delete(islogin, isowner, wrapasync (controlers.delete)
 );
 
-
-
-
-
+router
+.route("/search")
+.post(wrapasync(controlers.search))
 
 
    module.exports = router;
