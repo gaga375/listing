@@ -50,3 +50,11 @@ SECRET=session_secret_key
 
 # Start the server
 npm start
+```
+
+## 📧 Contact
+
+Made with ❤️ by [Gagan Baghel](mailto:baghelgagan787@gmail.com)
+
+📞 Phone: +91-9302327325
+
