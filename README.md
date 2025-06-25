@@ -54,7 +54,7 @@ npm start
 
 ## 📧 Contact
 
-Made with ❤️ by [Gagan Baghel](mailto:baghelgagan787@gmail.com)
+Made with ❤️ by Gagan Baghel baghelgagan787@gmail.com
 
 📞 Phone: +91-9302327325
 
